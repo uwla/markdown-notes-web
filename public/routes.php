@@ -1,3 +1,3 @@
 <?php
-echo shell_exec('cd files/ && find -type f | sort');
+echo shell_exec('cd files/ && find . -type f | sort');
 ?>

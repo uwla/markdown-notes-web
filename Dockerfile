@@ -1,10 +1,13 @@
 FROM alpine:3.12
 
-# Install packages and remove default server definition
+# Install packages
 RUN apk update
-RUN apk --no-cache add nginx supervisor curl \
+RUN apk --no-cache add nginx curl \
     php7 php7-fpm php7-openssl php7-common \
     nodejs-current npm
+
+# install supervisor (but written in Go)
+COPY --from=ochinchina/supervisord /usr/local/bin/supervisord /usr/bin/supervisord
 
 # Configure nginx
 COPY config/nginx/nginx.conf /etc/nginx/
@@ -17,10 +20,6 @@ COPY config/php7/php.ini /etc/php7/conf.d/custom.ini
 # Configure supervisord
 COPY config/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Configure script to start supervisord
-COPY config/entrypoint.sh /sbin/
-RUN chmod 755 /sbin/entrypoint.sh
-
 # Add application
 RUN mkdir -p /var/www/ &&\
   rm -rf /var/www/* &&\
@@ -28,7 +27,8 @@ RUN mkdir -p /var/www/ &&\
 COPY ./package.json ./webpack.mix.js /var/www/html/
 COPY ./app /var/www/html/app/
 COPY ./styles /var/www/html/styles/
-COPY	./public/index.php ./public/routes.php ./public/favicon.ico /var/www/html/public/
+COPY ./public/index.php ./public/routes.php ./public/favicon.ico /var/www/html/public/
+COPY ./public/assets /var/www/html/public/assets/
 
 # build the app
 WORKDIR /var/www/html
@@ -49,7 +49,7 @@ USER nobody
 EXPOSE 8080
 
 # Start nginx & php-fpm
-CMD ["/sbin/entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Configure a healthcheck to validate that everything is up&running
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
+HEALTHCHECK --timeout=3s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping

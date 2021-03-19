@@ -10,8 +10,8 @@
  */
 const mix = require("laravel-mix");
 mix.disableNotifications();
-mix.js("./app/main.js", "./public/js")
-	.sass("./styles/main.scss", "./public/css")
+mix.js("./app/main.js", "./public/assets/js")
+	.sass("./styles/main.scss", "./public/assets/css")
   .extract()
   .setPublicPath("./public/")
   .version();
