@@ -24,7 +24,16 @@ RUN chmod 755 /sbin/entrypoint.sh
 # Add application
 RUN mkdir -p /var/www/ &&\
   rm -rf /var/www/* &&\
-  mkdir /var/www/localhost
+  mkdir /var/www/html
+COPY ./package.json ./webpack.mix.js /var/www/html/
+COPY ./app /var/www/html/app/
+COPY ./styles /var/www/html/styles/
+COPY	./public/index.php ./public/routes.php ./public/favicon.ico /var/www/html/public/
+
+# build the app
+WORKDIR /var/www/html
+RUN npm install
+RUN npm run production
 
 # Make sure files are accessable when run under nobody user
 RUN chown -R nobody:nobody /var/www/ && \
@@ -35,7 +44,6 @@ RUN chown -R nobody:nobody /var/www/ && \
 
 # Switch to use a non-root user from here on
 USER nobody
-WORKDIR /var/www/localhost
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
