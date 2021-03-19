@@ -1,0 +1,6 @@
+.env
+public/css
+public/js
+public/files
+mix-manifest.json
+node_modules

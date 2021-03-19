@@ -1,0 +1,21 @@
+version: "2.0"
+
+services:
+  markdown:
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: markdown_notes
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - VIRTUAL_PORT=8080
+    volumes:
+      - ./:/var/www/localhost/
+      - ${FILES}:/var/www/localhost/public/files
+    user: nobody
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}
