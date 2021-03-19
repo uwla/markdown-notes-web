@@ -1,18 +1,14 @@
 import axios from "axios";
+import { fixImgUrls, mapDataToFileObjects } from "./helpers";
+/*
+ * Function below fixes this bug: relative IMG url are not correctly solved (by the browser) because the user's notes (including markdown and images) are stored in public/files/, so the browser would make the request of an image to 
+ * */
 
 export default {
 	name: "App",
 	created() {
 		axios.get("/routes.php").then(response => {
-			this.files = response.data.split("\n").map(path => {
-				path = path.replace(/^\.\//, "");
-				return {
-					path: path,
-					url: "/files/" + path,
-					content: ""
-				}
-			});
-			this.files.pop(); // last item is empty string. remove it
+			this.files = mapDataToFileObjects(response.data);
 			this.handleRouteChange(this.$route);
 		})
 	},
@@ -41,7 +37,8 @@ export default {
 			}
 			axios.get(file.url)
 				.then(response => {
-					file.content = response.data;
+					file.content = fixImgUrls(response.data, file.path);
+					console.log(file.content)
 					this.renderFile(file);
 				})
 				.catch(console.log);
