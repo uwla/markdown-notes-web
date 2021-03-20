@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: inherit;
+	word-break: normal;
 }
 
 html, body {
@@ -22,6 +23,9 @@ body, #app {
   text-align: justify;
   padding: 32px;
   min-height: 100vh;
+	* {
+		word-break: normal !important; // fix weird issue with VueMarkdown
+	}
 }
 
 img {
