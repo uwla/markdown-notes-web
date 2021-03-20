@@ -21,7 +21,7 @@ body, #app {
 #app {
   text-align: justify;
   padding: 32px;
-	min-height: 100vh;
+  min-height: 100vh;
 }
 
 img {
@@ -46,7 +46,7 @@ ul, ol {
 }
 
 li, ul > * {
-	text-align: left;
+  text-align: left;
 }
 
 p {
@@ -56,15 +56,15 @@ p {
 }
 
 svg, table {
-	display: block;
-	margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 #app table {
-	width: fit-content;
+  width: fit-content;
 }
 
 #app .md-body {
-	margin: 0 auto;
-	max-width: 800px;
+  margin: 0 auto;
+  max-width: 800px;
 }

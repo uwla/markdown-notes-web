@@ -2,20 +2,20 @@
 @import 'sidebar';
 
 .search-bar {
-	margin: 16px 8px;
-	input {
-		background-color: #fff;
-		border-radius: 5px;
-		border: 1px solid #ccc;
-		font-size: 1rem;
-		color: #000;
-		display: block;
-		padding: 8px;
-		width: 100%;
-		&:focus {
-			border-color: #66afe9;
-			outline: 0;
-		}
-	}
+  margin: 16px 8px;
+  input {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #000;
+    display: block;
+    padding: 8px;
+    width: 100%;
+    &:focus {
+      border-color: #66afe9;
+      outline: 0;
+    }
+  }
 }
 

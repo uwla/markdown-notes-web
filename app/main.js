@@ -25,10 +25,10 @@ Vue.component("markdown-content", VMdPreview);
 
 // vue router will be used to prevent page reload
 const router = new VueRouter({
-	mode: "history",
+  mode: "history",
 });
 
 new Vue({
-	render: h => h(App),
-	router
+  render: h => h(App),
+  router
 }).$mount("#app");
