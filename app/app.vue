@@ -16,7 +16,7 @@
 				</div>
 				<ul class="pages-menu">
 					<li v-for="(file, i) in filteredFiles" :key="i"> 
-						<router-link :to="file.path">{{ file.path }}</router-link>	
+						<router-link :to="'/' + file.path">{{ file.path }}</router-link>	
 					</li>
 				</ul>
 			</div>	
@@ -29,7 +29,7 @@
 			<input type="text" v-model="search" class="field-input">
 			<ul class="pages-menu">
 				<li v-for="(file, i) in filteredFiles" :key="i"> 
-					<router-link :to="file.path">{{ file.path }}</router-link>	
+					<router-link :to="'/' + file.path">{{ file.path }}</router-link>	
 				</li>
 			</ul>
 		</div>
