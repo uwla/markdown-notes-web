@@ -38,7 +38,6 @@ export default {
 			axios.get(file.url)
 				.then(response => {
 					file.content = fixImgUrls(response.data, file.path);
-					console.log(file.content)
 					this.renderFile(file);
 				})
 				.catch(console.log);
