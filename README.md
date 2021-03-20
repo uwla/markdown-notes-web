@@ -8,10 +8,10 @@ Basically, you mount the directory where your notes are located to the Docker co
 
 ## Screenshots
 
-![Image 1](.demo/1.png)
-![Image 2](.demo/2.png)
-![Image 3](.demo/3.png)
-![Image 4](.demo/4.png)
+![Image 1](./demo/screenshots/1.png)
+![Image 2](./demo/screenshots/2.png)
+![Image 3](./demo/screenshots/3.png)
+![Image 4](./demo/screenshots/4.png)
 
 ## Demo
 
