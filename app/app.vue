@@ -11,8 +11,8 @@
 				<router-link to="/" id="sidebar-btn-home">
 					HOME PAGE
 				</router-link>
-				<div id="sidebar-search">
-					<input type="text" v-model="search" class="field-input">
+				<div class="search-bar">
+					<input type="text" v-model="search">
 				</div>
 				<ul class="pages-menu">
 					<li v-for="(file, i) in filteredFiles" :key="i"> 
@@ -26,7 +26,9 @@
 		</div>
 		<div v-show="showHomePage">
 			<h1>NOTES</h1>
-			<input type="text" v-model="search" class="field-input">
+			<div class="search-bar">
+				<input type="text" v-model="search">
+			</div>
 			<ul class="pages-menu">
 				<li v-for="(file, i) in filteredFiles" :key="i"> 
 					<router-link :to="'/' + file.path">{{ file.path }}</router-link>	
