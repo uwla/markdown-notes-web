@@ -1,4 +1,4 @@
-# DOCKER MARKDOWN VUE
+# MARKDOWN NOTES WEB
 
 I created this app so I can render my markdown notes without compiling them (for example, with Pandoc). Pandoc is great but it usually takes signficant time to compile documents, and it also has a lot of dependencies, which requires lots of disk space. Also, as far as I known, Pandoc does not render [Mermaid flow charts](https://mermaid-js.github.io/mermaid/), which are awesome.
 
@@ -36,6 +36,4 @@ docker-composeu up -d
 
 ## LICENSE
 
-Do whathever you want with the code of this repo unless your hair is green.
-
-If your hair is green, and your skin is also green, then, oohhh man you must be Hulk! If that is the case, I can't do nothing to prevent you from using this software.
+MIT
